@@ -1,6 +1,30 @@
-# GamevidAngularTailwindFormsRoutingRxjsAuthWasmFfmpegVideojsVercel
+# GameVid - Angular Project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
+
+## Features
+
+- User:
+  - Login
+  - Registration
+  - Authentication persistence
+
+- Videos:
+  - Upload
+  - Manage
+  - View
+
+## User System
+
+- UI:
+  - Navigation Component
+  - Modal Component
+  - Login/Register Components
+  - Tabs Component
+
+- Form Validation
+- Database
+- State Management
 
 ## Development server
 
