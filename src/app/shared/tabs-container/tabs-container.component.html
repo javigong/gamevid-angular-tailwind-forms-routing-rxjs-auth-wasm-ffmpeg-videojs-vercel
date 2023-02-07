@@ -1,1 +1,13 @@
-<p>tabs-container works!</p>
+<!-- Tabs -->
+<ul class="flex flex-wrap mb-4">
+  <li *ngFor="let tab of tabs" class="flex-auto text-center">
+    <a
+      class="block rounded py-3 px-4 transition hover:text-white text-white bg-indigo-400"
+      href="#"
+      >{{ tab.tabTitle }}</a
+    >
+  </li>
+</ul>
+
+<!-- Project here the Tab Components -->
+<ng-content></ng-content>
