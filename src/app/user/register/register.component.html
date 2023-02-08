@@ -3,7 +3,7 @@
   <!-- Name -->
   <div class="mb-3">
     <label class="inline-block mb-2">Name</label>
-    <app-input 
+    <app-input
       [control]="registerForm.controls.name"
       placeholder="Enter Name"
     ></app-input>
@@ -21,25 +21,25 @@
   <!-- Age -->
   <div class="mb-3">
     <label class="inline-block mb-2">Age</label>
-    <app-input [control]="registerForm.controls.age" type="number" placeholder="Enter Age"></app-input>
+    <app-input
+      [control]="registerForm.controls.age"
+      type="number"
+      placeholder="Enter Age"
+    ></app-input>
   </div>
   <!-- Password -->
   <div class="mb-3">
     <label class="inline-block mb-2">Password</label>
-    <input
+    <app-input
+      [control]="registerForm.controls.password"
       type="password"
-      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
-      placeholder="Password"
-    />
+      placeholder="Enter Password"
+    ></app-input>
   </div>
   <!-- Confirm Password -->
   <div class="mb-3">
     <label class="inline-block mb-2">Confirm Password</label>
-    <input
-      type="password"
-      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
-      placeholder="Confirm Password"
-    />
+    <app-input [control]="registerForm.controls.confirm_password" type="confirm_password" placeholder="Confirm Password"></app-input>
   </div>
   <!-- Phone Number -->
   <div class="mb-3">
