@@ -22,11 +22,18 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   - Login/Register Components
   - Tabs Component
 
-- Form Validation
-- Database
-- State Management
+- Forms:
+  - Validation
+  - Feedback
+  - Dynamic Fields
 
-## Development server
+  *Two Different Systems for Handling Forms in Angular:
+    - Reactive Forms: Harder to learn, more flexible, scalable, configure through classes
+    - Template Forms: Easier to learn, less flexible, better for small forms, configured through templates
+
+- Database:
+
+- State Management:
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
