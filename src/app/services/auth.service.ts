@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/compat/firestore';
+import { map, Observable } from 'rxjs';
 import IUser from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private usersCollection: AngularFirestoreCollection<IUser>
+  private usersCollection: AngularFirestoreCollection<IUser>;
+  public isAuthenticated$: Observable<boolean>; // $ at the end identifies a property as an Observable
 
   constructor(private auth: AngularFireAuth, private db: AngularFirestore) {
     this.usersCollection = db.collection('users');
+    this.isAuthenticated$ = auth.user.pipe(map((user) => !!user));
   }
 
   public async createUser(userData: IUser) {
@@ -19,7 +25,7 @@ export class AuthService {
       userData.password as string
     );
 
-    if(!userCred.user) {
+    if (!userCred.user) {
       throw new Error("User can't be found");
     }
 
@@ -31,8 +37,8 @@ export class AuthService {
     });
 
     await userCred.user.updateProfile({
-      displayName: userData.name
-    })
+      displayName: userData.name,
+    });
   }
 }
 
