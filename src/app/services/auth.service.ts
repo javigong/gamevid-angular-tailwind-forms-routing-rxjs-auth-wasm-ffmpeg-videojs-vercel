@@ -35,3 +35,7 @@ export class AuthService {
     })
   }
 }
+
+//* At firestore db console: modify rules:
+// allow read: if true;
+// allow write: if request.auth.uid != null;
