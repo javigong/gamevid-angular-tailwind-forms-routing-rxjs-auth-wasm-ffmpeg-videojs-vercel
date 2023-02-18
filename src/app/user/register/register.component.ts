@@ -45,7 +45,7 @@ export class RegisterComponent {
 
   async register() {
     this.showAlert = true;
-    this.alertColor = 'Please wait! Your account is being created.';
+    this.alertMsg = 'Please wait! Your account is being created.';
     this.alertColor = 'blue';
     this.inSubmission = true;
 
