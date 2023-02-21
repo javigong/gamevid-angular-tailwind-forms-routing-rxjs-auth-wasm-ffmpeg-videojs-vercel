@@ -35,14 +35,17 @@ export class RegisterComponent {
   alertMsg = 'Please wait! Your account is being created.';
   alertColor = 'blue';
 
-  registerForm = new FormGroup({
-    name: this.name,
-    email: this.email,
-    age: this.age,
-    password: this.password,
-    confirm_password: this.confirm_password,
-    phoneNumber: this.phoneNumber,
-  }, [RegisterValidators.match]);
+  registerForm = new FormGroup(
+    {
+      name: this.name,
+      email: this.email,
+      age: this.age,
+      password: this.password,
+      confirm_password: this.confirm_password,
+      phoneNumber: this.phoneNumber,
+    },
+    [RegisterValidators.match('password', 'confirm_password')]
+  );
 
   async register() {
     this.showAlert = true;
