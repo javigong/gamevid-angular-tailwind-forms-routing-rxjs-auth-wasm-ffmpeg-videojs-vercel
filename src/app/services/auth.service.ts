@@ -49,7 +49,7 @@ export class AuthService {
     });
   }
 
-  async logout($event?: Event) {
+  public async logout($event?: Event) {
     if ($event) {
       $event.preventDefault();
     }
