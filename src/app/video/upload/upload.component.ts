@@ -8,6 +8,9 @@ import { Component } from '@angular/core';
 export class UploadComponent {
   isDragover = false;
   file: File | null = null;
+  nextStep = false;
+
+  constructor() {}
 
   storeFile($event: Event) {
     this.isDragover = false;
@@ -18,6 +21,6 @@ export class UploadComponent {
       return
     }
 
-    console.log(this.file);
+   this.nextStep = true;
   }
 }

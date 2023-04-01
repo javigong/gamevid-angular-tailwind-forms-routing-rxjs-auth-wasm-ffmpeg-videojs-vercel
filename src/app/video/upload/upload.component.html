@@ -4,7 +4,7 @@
     <div class="font-bold mb-6">Upload Video</div>
 
     <!-- Upload Dropbox -->
-    <div
+    <div *ngIf="!nextStep; else uploadFormCtr"
       app-event-blocker
       (dragend)="isDragover = false"
       (dragover)="isDragover = true"
@@ -21,7 +21,7 @@
     </div>
 
     <!-- Video Editor -->
-    <div>
+    <ng-template #uploadFormCtr>
       <!-- Form -->
       <form>
         <!-- Screenshots -->
@@ -56,6 +56,6 @@
           </button>
         </div>
       </form>
-    </div>
+    </ng-template>
   </div>
 </section>
