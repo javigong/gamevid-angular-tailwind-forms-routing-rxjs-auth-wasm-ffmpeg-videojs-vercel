@@ -4,6 +4,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import firebase from 'firebase/compat/app';
 import { last, switchMap } from 'rxjs/operators';
+import { ClipService } from 'src/app/services/clip.service';
 import { v4 as uuid } from 'uuid';
 
 @Component({
@@ -33,7 +34,8 @@ export class UploadComponent {
 
   constructor(
     private storage: AngularFireStorage,
-    private auth: AngularFireAuth
+    private auth: AngularFireAuth,
+    private clipService: ClipService
   ) {
     auth.user.subscribe((user) => (this.user = user));
   }
@@ -77,12 +79,14 @@ export class UploadComponent {
       .subscribe({
         next: (url) => {
           const clip = {
-            uid: this.user?.uid,
-            displayName: this.user?.displayName,
+            uid: this.user?.uid as string,
+            displayName: this.user?.displayName as string,
             title: this.title.value,
             fileName: `${clipFileName}.mp4`,
             url,
           };
+
+          this.clipService.createClip(clip);
 
           console.log(clip);
 
