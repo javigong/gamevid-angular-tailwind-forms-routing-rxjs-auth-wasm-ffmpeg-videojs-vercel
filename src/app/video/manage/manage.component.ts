@@ -18,7 +18,7 @@ export class ManageComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private clipService: ClipService,
-    private modal: ModalService,
+    private modal: ModalService
   ) {}
 
   ngOnInit(): void {
@@ -53,14 +53,25 @@ export class ManageComponent implements OnInit {
 
     this.activeClip = clip;
 
-    this.modal.toggleModal('editClip')
+    this.modal.toggleModal('editClip');
   }
 
   update($event: IClip) {
-    this.clips.forEach((element, index)=>{
-      if(element.docID === $event.docID) {
+    this.clips.forEach((element, index) => {
+      if (element.docID === $event.docID) {
         this.clips[index] = $event;
       }
-    })
+    });
+  }
+
+  deleteClip($event: Event, clip: IClip) {
+    $event.preventDefault();
+
+    this.clipService.deleteClip(clip);
+    this.clips.forEach((element, index) => {
+      if (element.docID === clip.docID) {
+        this.clips.splice(index, 1);
+      }
+    });
   }
 }
