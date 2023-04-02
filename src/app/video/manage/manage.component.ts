@@ -12,12 +12,13 @@ import { ModalService } from 'src/app/services/modal.service';
 export class ManageComponent implements OnInit {
   videoOrder = '1';
   clips: IClip[] = [];
+  activeClip: IClip | null = null;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private clipService: ClipService,
-    private modal: ModalService
+    private modal: ModalService,
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +50,8 @@ export class ManageComponent implements OnInit {
 
   openModal($event: Event, clip: IClip) {
     $event.preventDefault();
+
+    this.activeClip = clip;
 
     this.modal.toggleModal('editClip')
   }
