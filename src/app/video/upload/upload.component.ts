@@ -43,7 +43,9 @@ export class UploadComponent {
   storeFile($event: Event) {
     this.isDragover = false;
 
-    this.file = ($event as DragEvent).dataTransfer?.files.item(0) ?? null;
+    this.file = ($event as DragEvent).dataTransfer
+      ? ($event as DragEvent).dataTransfer?.files.item(0) ?? null
+      : ($event.target as HTMLInputElement).files?.item(0) ?? null;
 
     if (!this.file || this.file.type !== 'video/mp4') {
       return;
@@ -98,7 +100,7 @@ export class UploadComponent {
         },
         error: (error) => {
           this.uploadForm.enable();
-          
+
           this.alertColor = 'red';
           this.alertMsg = 'There was an error uploading your video.';
           this.showPercentage = false;
