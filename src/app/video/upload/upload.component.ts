@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import { last, switchMap } from 'rxjs/operators';
 import { ClipService } from 'src/app/services/clip.service';
-import { v4 as uuid } from 'uuid';
 import { FfmpegService } from 'src/app/services/ffmpeg.service';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-upload',
@@ -53,7 +53,7 @@ export class UploadComponent implements OnDestroy {
     this.task?.cancel();
   }
 
-  storeFile($event: Event) {
+  async storeFile($event: Event) {
     this.isDragover = false;
 
     this.file = ($event as DragEvent).dataTransfer
@@ -63,6 +63,8 @@ export class UploadComponent implements OnDestroy {
     if (!this.file || this.file.type !== 'video/mp4') {
       return;
     }
+
+    await this.ffmpegService.getScreenshots(this.file);
 
     this.title.setValue(this.file.name.replace(/\.[^/.]+$/, ''));
     this.nextStep = true;
@@ -113,9 +115,7 @@ export class UploadComponent implements OnDestroy {
           this.showPercentage = false;
 
           setTimeout(() => {
-            this.router.navigate([
-              '/clip', clipDocRef.id,
-            ])
+            this.router.navigate(['/clip', clipDocRef.id]);
           }, 1000);
         },
         error: (error) => {
